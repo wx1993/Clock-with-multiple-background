@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>TIME</title>
+</head>
+<style>
+body{
+	margin:0;
+	background-image:url(6.jpg);
+	background-size: 100%;
+}
+#main{
+	width: 800px;
+	height: 200px;
+	padding:30px;
+	font-size: 110px;
+	font-family:Snell Roundhand; /*Kokonor*/
+	color:#FFC977;
+	margin-top: 150px;
+	letter-spacing: 8px;
+}
+#footer{
+	letter-spacing: 1px;
+	width:100%;
+	font-size: 12px;
+	position: absolute;
+	bottom: 0px;
+	text-align: center;
+	color:#808080;
+	background:#1b1b1b;
+	padding:10px 0;
+}
+.bg{
+	margin-top: 140px;
+}
+a{
+	display: inline-block;
+	width: 12px;
+	height: 12px;
+	background-color: white;
+	-webkit-transition:0.3s ease-in-out;
+	-moz-transition:0.3s ease-in-out;
+	-o-transition:0.3s ease-in-out;
+	transition:0.3s ease-in-out;
+}
+a:hover,a:focus{
+	-webkit-transform:scale(1.3);
+	-moz-transform:scale(1.3);
+	-o-transform:scale(1.3);
+	transform:scale(1.3);
+}
+#a1{background-color:#FFFFFF;}
+#a2{background-color:#77C9FF;}
+#a3{background-color:#FFC266}
+#a4{background-color:#B888FF;}
+#a5{background-color:#F87C2A;}
+#a6{background-color:#88FF88;}
+</style>
+
+<body>
+	<center>
+		<div id="main">
+			<span id="day"></span><br>
+			<span id="time"></span>
+			<div>
+				<div class="bg">
+					<a id="a1" href="#"></a>
+					<a id="a2" href="#"></a>
+					<a id="a3" href="#"></a>
+					<a id="a4" href="#"></a>
+					<a id="a5" href="#"></a>
+					<a id="a6" href="#"></a>
+				</div>
+			</center>
+			<div id="footer">COPYRIGHT ©2015 RAYCHAN All RIGHT RESERVED</div>
+		</body>
+
+		<script>
+//时间显示函数
+function clock(){
+	var date = new Date();
+	var year = date.getFullYear();
+	var month = date.getMonth()+1;
+	var day = date.getDate();
+	var hour = date.getHours();
+	var minute = date.getMinutes();
+	var second = date.getSeconds();
+	var nowDay = year+'-'+(month<10?('0'+month):month)+'-'
+	+(day<10?('0'+day):day);
+	var nowTime = (hour<10?('0'+hour):hour)+':'
+	+(minute<10?('0'+minute):minute)+':'+(second<10?('0'+second):second);
+	document.getElementById('day').textContent = nowDay;
+	document.getElementById('time').textContent = nowTime;
+}
+//设置函数执行的时间间隔，效果即每秒钟秒针跳动一次
+var int = setInterval(clock, 1000);
+
+/*设置小图标按钮效果，即点击图标切换背景图，这里应该有更好的方法，
+即通过this传参来判断a标签并设置相应的图片，这样可以大大减少代码量。
+另外也可以在a标签里面设置click动作来执行函数.
+在点击图标是也可以同时修改文字字体，这里就不再添加了*/
+var main = document.getElementById('main');
+var a = document.getElementsByTagName('a');
+a[0].onmouseover = function(){
+	document.body.style.backgroundImage="url(1.jpg)";
+	main.style.color = "#000000";	
+	// main.style.fontFamily = "Kokonor";
+}
+a[1].onmouseover = function(){
+	document.body.style.backgroundImage="url(2.jpg)";
+	main.style.color = "#EE6666";	
+	// main.style.fontFamily = "Arial";
+}
+a[2].onmouseover = function(){
+	document.body.style.backgroundImage="url(3.jpg)";	
+	main.style.color = "#EB4848";	
+	// main.style.fontFamily = "sans-serif";
+}
+a[3].onmouseover = function(){
+	document.body.style.backgroundImage="url(4.jpg)";	
+	main.style.color = "#66E0FF";	
+	// main.style.fontFamily = "Monaco";
+}
+a[4].onmouseover = function(){
+	document.body.style.backgroundImage="url(5.jpg)";	
+	main.style.color = "#FFFFFF";	
+	// main.style.fontFamily = "Skia";
+}
+a[5].onmouseover = function(){
+	document.body.style.backgroundImage="url(6.jpg)";	
+	main.style.color = "#FFC977";	
+	// main.style.fontFamily = "Iowan Old Style";
+}
+
+</script>
+</html>
